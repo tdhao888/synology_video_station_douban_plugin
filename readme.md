@@ -1,17 +1,38 @@
+
+
 终于我还是弃坑了。在我写了半天TMDB的东西之后，发现Video Station本来就是用的TMDB接口啊（摔！自带得搜索不能用的原因是TMDB接口地址被墙了。但我调试api的时候发现了一个不正规地址z4vrpkijmodhwsxzc.stoplight-proxy.io。遵循如下步骤修改就可以使用自带搜索了。
+
+# 方法1（推荐）
+
+1. ssh 登录群辉
+
+2. sudo -i # 进入root模式
+
+3. 执行 vi /etc/hosts
+
+4. 在文件末尾新增一行内容：13.224.161.90 api.themoviedb.org
+
+---
+如果该方式还是无法搜刮到信息，可以自己翻墙后再 ping api.themoviedb.org 替换掉 13.224.161.90 即可
+
+
+
+# 方法2（~~已失效，域名容易被墙~~）
 
 1. ssh 登录群晖
 2. 执行命令 cd /var/packages/VideoStation/target/plugins
 3. 编辑 util_themoviedb.php 文件
 4. 修改其中的api.themoviedb.org 为 z4vrpkijmodhwsxzc.stoplight-proxy.io
 
-# 7.0 的修改方式
+## 7.0 的修改方式
 修改文件：/var/packages/VideoStation/target/plugins/syno_themoviedb/constant.py
 
 原始内容：
-HEMOVIEDB_URL = 'https://api.themoviedb.org/3/'
 
-修改内容：
+THEMOVIEDB_URL = 'https://api.themoviedb.org/3/'
+
+修改内容(已失效)：
+
 THEMOVIEDB_URL = 'https://z4vrpkijmodhwsxzc.stoplight-proxy.io/3/'
 
 好了，没事了，大家散了吧。
@@ -50,3 +71,4 @@ THEMOVIEDB_URL = 'https://z4vrpkijmodhwsxzc.stoplight-proxy.io/3/'
 
 +++++++++
 2020-02-23 更新 使用 cloudflare workers 代理服务器间接访问豆瓣
+
