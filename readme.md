@@ -7,9 +7,13 @@
 
 # 7.0 的修改方式
 修改文件：/var/packages/VideoStation/target/plugins/syno_themoviedb/constant.py
+
 原始内容：
+
 HEMOVIEDB_URL = 'https://api.themoviedb.org/3/'
+
 修改内容：
+
 THEMOVIEDB_URL = 'https://z4vrpkijmodhwsxzc.stoplight-proxy.io/3/'
 
 
